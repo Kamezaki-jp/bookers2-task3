@@ -27,6 +27,8 @@
           <th></th>
           <th>Title</th>
           <th>Opinion</th>
+          <th></th>
+          <th></th>
         </tr>
       
         <% @books.each do |book| %>
@@ -38,6 +40,10 @@
             </td>
             <td><%= link_to book.title, book_path(book) %></td>
             <td><%= book.body %></td>
+            <td>
+              <%= render 'favorites/favorite', book: book %>
+            </td>
+            <td></td>
           </tr>
         <% end %>
       </table>

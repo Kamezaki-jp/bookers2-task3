@@ -19,6 +19,7 @@
           </td>
           <td class="p-3"><%= link_to @book.title %></td>
           <td class="p-3"><%= @book.body %></td>
+          <td></td>
       
           <% if @book.user_id == current_user.id %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-success mr-3" %></td>
