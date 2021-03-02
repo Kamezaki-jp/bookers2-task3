@@ -1,11 +1,17 @@
-<% if book.favorited_by?(current_user) %>
-  <%= link_to book_favorites_path(book), method: :delete do %>
-    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+<td class="p-3">
+  <% if book.favorited_by?(current_user) %>
+    <%= link_to book_favorites_path(book), method: :delete do %>
+      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+        <%= book.favorites.count %>
+    <% end %>
+  <% else %>
+    <%= link_to book_favorites_path(book), method: :post do %>
+      <i class="far fa-heart"></i>
       <%= book.favorites.count %>
+    <% end %>
   <% end %>
-<% else %>
-  <%= link_to book_favorites_path(book), method: :post do %>
-    <i class="far fa-heart"></i>
-    <%= book.favorites.count %>
-  <% end %>
-<% end %>
+</td>
+
+<td class="p-3">
+  コメント数：<%= @book.book_comments.count %>
+</td>

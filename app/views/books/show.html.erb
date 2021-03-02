@@ -19,12 +19,14 @@
           </td>
           <td class="p-3"><%= link_to @book.title %></td>
           <td class="p-3"><%= @book.body %></td>
-          <td></td>
+
+            <%= render "favorites/favorite", book: @book %>
 
           <% if @book.user_id == current_user.id %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-success mr-3" %></td>
             <td><%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
           <% end %>
+
         </tr>
       </table>
 
@@ -39,7 +41,7 @@
             <td><%= book_comment.comment %></td>
             <% if book_comment.user_id == current_user.id %>
               <td>
-                <%= link_to "destroy", book_book_comments_path(@book.id, book_comment_id: book_comment.id), method: :delete, class: "btn btn-danger" %>
+                <%= link_to "destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger" %>
               </td>
             <% end %>
           </tr>

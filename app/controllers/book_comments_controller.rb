@@ -16,7 +16,7 @@ class BookCommentsController < ApplicationController
 
   def destroy
     flash[:notice]="Comment was successfully destroyed."
-    BookComment.find_by(id: params[:book_comment_id], book_id: params[:book_id]).destroy
+    @book_comment = BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
     redirect_to book_path(params[:book_id])
   end
 
