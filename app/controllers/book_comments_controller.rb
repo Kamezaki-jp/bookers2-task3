@@ -1,4 +1,5 @@
 class BookCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @book = Book.find(params[:book_id])
@@ -17,7 +18,7 @@ class BookCommentsController < ApplicationController
   def destroy
     flash[:notice]="Comment was successfully destroyed."
     @book_comment = BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
-    redirect_to book_path(params[:book_id])
+    redirect_to request.referer
   end
 
   private
